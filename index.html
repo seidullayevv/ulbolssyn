@@ -94,7 +94,7 @@ function item({q,g}){const a=S.a[q.n],lab={ok:'Дұрыс',part:'Ішінара 
  if(q.t==='m'){const t=Object.fromEntries(q.o);b=q.items.map(it=>{const u=a&&a[it.k],k=q.ans[it.k];return`<div class=mr><b>${it.k}) ${e(it.t)}</b><div class="${u===k?'ok':'bad'}">Сіздің жауабыңыз: ${u?u+') '+e(t[u]):'—'}</div>${u===k?'':`<div class=ok>Дұрыс жауабы: ${k}) ${e(t[k])}</div>`}</div>`}).join('')}
  else b=q.o.map(([k,t])=>{const cr=q.t==='s'?q.ans===k:q.ans.includes(k),pk=q.t==='s'?a===k:a&&a.includes(k);return`<div class="ro ${cr?'ok':pk?'bad':''}"><b>${k}</b><span>${e(t)}</span><i>${cr&&pk?'✓ Сіз таңдадыңыз':cr?'✓ Дұрыс жауап':pk?'✗ Сіз таңдадыңыз':''}</i></div>`}).join('');
  return`<div class="rv ${g.st}"><div class=rh><span>№ ${q.n}</span><em>${lab} · ${g.p} / ${g.m} ұпай</em></div><p>${e(q.q)}</p>${q.img?`<div class=fig><img alt="Сурет" src="${IMG[q.img]}"></div>`:''}${b}${q.ex?`<div class=ex><b>Түсініктеме:</b> ${e(q.ex)}</div>`:''}</div>`}
-const SEND_URL='',PK='bio-ubt-pend';
+const SEND_URL='https://script.google.com/macros/s/AKfycbxJ3qYmMdLzyMeos3IvAmut_8IVfi-arXf4vsZM80e3DpedxLbh5XAzqSF6LX1GXop_qA/exec',PK='bio-ubt-pend';
 const fmt=(q,a)=>!nA(a)?'—':q.t==='s'?a:q.t==='m'?Object.keys(a).sort().map(k=>k+'-'+a[k]).join(', '):[...a].sort().join(', ');
 const post=p=>fetch(SEND_URL,{method:'POST',mode:'no-cors',body:JSON.stringify(p)}).then(()=>{try{localStorage.removeItem(PK)}catch(x){}});
 function send(){if(!SEND_URL)return;const el=$('#snd');if(!el)return;
